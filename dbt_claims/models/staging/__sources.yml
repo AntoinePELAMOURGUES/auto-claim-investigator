@@ -1,23 +1,26 @@
 version: 2
 
-# Try using these source definitions instead!
 sources:
-  - name: ecom
-    schema: "{{ target.schema }}_raw"
-    description: E-commerce data for the Jaffle Shop
+  - name: raw_layer
+    database: INSURANCE_DB
+    schema: RAW
     tables:
-      - name: raw_customers
-        description: One record per person who has purchased one or more items
-      - name: raw_orders
-        description: One record per order (consisting of one or more order items)
-        config:
-          loaded_at_field: ordered_at
-      - name: raw_items
-        description: Items included in an order
-      - name: raw_stores
-        config:
-          loaded_at_field: opened_at
-      - name: raw_products
-        description: One record per SKU for items sold in stores
-      - name: raw_supplies
-        description: One record per supply per SKU of items sold in stores
+      - name: constats
+        description: "Table brute contenant les JSON des constats amiables."
+        columns:
+          - name: metadata_file_name
+            description: "Nom du fichier source contenant le constat."
+            tests:
+              - not_null
+          - name: metadata_row_number
+            description: "Numéro de ligne dans le fichier source."
+            tests:
+              - not_null
+          - name: record_content
+            description: "Contenu JSON brut du constat amiable."
+            tests:
+              - not_null
+          - name: ingested_at
+            description: "Horodatage de l'ingestion du constat."
+            tests:
+              - not_null
