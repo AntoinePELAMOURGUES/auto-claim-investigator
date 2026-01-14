@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_claims_analysis
+    description: "Table de faits contenant l'analyse brute générée par l'IA (Cortex) sur les constats."
+    columns:
+      - name: claim_id
+        description: "Identifiant unique du sinistre."
+      - name: accident_description
+        description: "Récit original de l'accident (Texte brut)."
+      - name: ai_assessment
+        description: "Verdict textuel généré par le LLM Mistral/Llama via Snowflake Cortex."
+
+  - name: dm_claims_dashboard
+    description: "Data Mart final pour le reporting. Contient les scores de responsabilité structurés."
+    columns:
+      - name: responsibility_score
+        description: "Score de responsabilité extrait (0, 50, ou 100)."
+      - name: responsibility_category
+        description: "Catégorie métier (Responsable, Partagé, Non Responsable)."
