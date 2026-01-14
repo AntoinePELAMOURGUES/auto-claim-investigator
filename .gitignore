@@ -1,0 +1,32 @@
+# --- Python (Classique) ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+*.log
+
+# --- dbt  ---
+# Ignore le dossier où dbt compile le SQL (c'est lourd et inutile sur git)
+target/
+dbt_modules/
+dbt_packages/
+logs/
+
+# Ignore les fichiers de configuration contenant des mots de passe
+profiles.yml
+secrets.json
+.env
+
+# --- IDE / Système ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- Data ---
+# On ignore les fichiers de données générés temporairement
+# Sauf si tu veux vraiment partager ton jeu de données fake sur GitHub
+# Dans ce cas, commente la ligne ci-dessous :
+data/*.json
+*.txt
